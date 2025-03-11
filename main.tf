@@ -3,10 +3,6 @@ provider "aws" {
   region  = "us-east-1"
 }
 
-data "aws_ami" "ec2_ami" {
-  most_recent = true
-}
-
 data "aws_vpc" "default" {
   default = true
 }
@@ -39,7 +35,7 @@ resource "aws_security_group_rule" "aws_hello_everything_out" {
 }
 
 resource "aws_instance" "hello_ec2" {
-  ami           = data.ami_app.ec2_ami.id
+  ami           = "ami-04b4f1a9cf54c11d0"
   instance_type = "t4g.nano"
 
   vpc_security_group_ids = [aws_security_group.aws_hello_sg.id]
