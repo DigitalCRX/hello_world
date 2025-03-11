@@ -49,7 +49,3 @@ resource "aws_eip" "hello_eip" {
   instance = aws_instance.hello_ec2.id
   vpc      = true
 }
-
-lifecycle {
-  create_before_destroy = true
-}
