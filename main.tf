@@ -13,7 +13,7 @@ resource "aws_security_group" "aws_hello_sg" {
 
   vpc_id = data.aws_vpc.default.id
 
-resource "aws_security_group_rule" "aws_hello_http_in"
+resource "aws_security_group_rule" "aws_hello_http_in" {
   type        = "ingress"
   from_port   = 8888
   to_port     = 8888
@@ -23,7 +23,7 @@ resource "aws_security_group_rule" "aws_hello_http_in"
   security_group_id = aws_security_group.aws_hello_sg.id
 }
 
-resource "aws_security_group_rule" "aws_hello_everything_out"
+resource "aws_security_group_rule" "aws_hello_everything_out" {
   type        = "egress"
   from_port   = 0
   to_port     = 0
