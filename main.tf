@@ -40,7 +40,7 @@ resource "aws_instance" "hello_ec2" {
 
   vpc_security_group_ids = [aws_security_group.aws_hello_sg.id]
 
-  tags {
+  tags = {
     Name = "hello_ec2"
   }
 }
