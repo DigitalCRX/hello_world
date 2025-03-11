@@ -12,6 +12,7 @@ resource "aws_security_group" "aws_hello_sg" {
   description = "Allow HTTP & HTTPS traffic in port 8888 and everything out"
 
   vpc_id = data.aws_vpc.default.id
+}
 
 resource "aws_security_group_rule" "aws_hello_http_in" {
   type        = "ingress"
