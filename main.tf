@@ -58,3 +58,7 @@ resource "aws_eip" "hello_eip" {
   instance = aws_instance.hello_ec2.id
   domain   = "vpc"
 }
+
+output "DNS" {
+  value = aws_instance.hello_ec2.public_dns
+}
