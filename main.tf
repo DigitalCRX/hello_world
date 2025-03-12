@@ -1,11 +1,11 @@
-provider "aws" {
-  profile = "default"
-  region  = "us-east-1"
-}
-
-data "aws_vpc" "default" {
-  default = true
-}
+#provider "aws" {
+#  profile = "default"
+#  region  = "us-east-1"
+#}
+#
+#data "aws_vpc" "default" {
+#  default = true
+#}
 
 resource "aws_security_group" "aws_hello_sg" {
   name        = "http_in"
