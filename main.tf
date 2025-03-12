@@ -36,7 +36,7 @@ resource "aws_security_group_rule" "aws_hello_everything_out" {
 
 resource "aws_instance" "hello_ec2" {
   ami           = "ami-084568db4383264d4"
-  instance_type = "t4g.nano"
+  instance_type = "t2.nano"
 
   vpc_security_group_ids = [aws_security_group.aws_hello_sg.id]
 
