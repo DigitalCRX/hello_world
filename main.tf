@@ -35,19 +35,18 @@ resource "aws_security_group_rule" "aws_hello_everything_out" {
 }
 
 resource "aws_instance" "hello_ec2" {
-  ami           = "ami-084568db4383264d4"
+  ami           = "ami-0c7af5fe939f2677f"
   instance_type = "t2.nano"
 
   vpc_security_group_ids = [aws_security_group.aws_hello_sg.id]
 
   user_data = <<-EOF
-  #!/bin/bash
-  sudo apt update -y
-  sudo apt install -y apache2
-  echo "<h1>Hello world</h1>" > /var/www/html/index/html
-  sudo systemctl enable apache2
-  sudo systemctl start apache2
-  EOF
+    #!/bin/bash
+    yum -y install httpd
+    echo "<h1>Hello world</h1>" > /var/www/html/index/html
+    sudo systemctl enable httpd
+    sudo ayarwmctl start httpd
+    EOF
 
   tags = {
     Name = "hello_ec2"
