@@ -9,3 +9,9 @@ variable "instance_type" {
   type = string
   default = "t2.micro"
 }
+
+variable "in_port" {
+  description = "Ingress port number for security group tied to EC2 hello instance"
+  type = number
+  default = 80
+}
