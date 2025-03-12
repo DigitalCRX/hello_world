@@ -40,6 +40,15 @@ resource "aws_instance" "hello_ec2" {
 
   vpc_security_group_ids = [aws_security_group.aws_hello_sg.id]
 
+  user_data = <<-EOF
+  #!/bin/bash
+  sudo apt update -y
+  sudo apt install -y apache2
+  echo "<h1>Hello world</h1>" > /var/www/html/index/html
+  sudo systemctl enable apache2
+  sudo systemctl start apache2
+  EOF
+
   tags = {
     Name = "hello_ec2"
   }
