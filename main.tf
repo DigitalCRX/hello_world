@@ -21,12 +21,10 @@ resource "aws_instance" "hello_ec2" {
   vpc_security_group_ids = [aws_security_group.aws_hello_sg.id]
 
   user_data = <<-EOF
-    #!/bin/bash
-    sudo yum update -y
-    sudo yum install -y httpd
-    sudo systemctl start httpd
+    yum -y install httpd
+    echo "<h1>Hello world</h1>" > /var/www/html/index.html
     sudo systemctl enable httpd
-    sudo echo "<h1>Hello world</h1>" > /var/www/html/index.html
+    sudo systemctl start httpd
     EOF
 
   tags = {
