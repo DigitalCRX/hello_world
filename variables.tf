@@ -13,5 +13,5 @@ variable "instance_type" {
 variable "in_port" {
   description = "Ingress port number for security group tied to EC2 hello instance"
   type        = number
-  default     = 80
+  default     = 8888
 }
