@@ -4,15 +4,28 @@ data "aws_vpc" "default" {
 
 resource "aws_security_group" "aws_hello_sg" {
   name        = "aws_hello_sg"
-  description = "Allow HTTP & HTTPS traffic in port 8888"
+  description = "Allow HTTP traffic over port 8888"
   vpc_id      = data.aws_vpc.default.id
 
-  ingress {
-    from_port   = var.in_port
-    to_port     = var.in_port
-    protocol    = "tcp"
-    cidr_blocks = ["0.0.0.0/0"]
+  tags = {
+    Name = "aws_hello_sg"
   }
+}
+
+resource "aws_vpc_security_group_ingress_rule" "allow_http" {
+  security_group_id = aws_security_group.aws_hello_sg.id
+  from_port         = var.in_port
+  to_port           = var.in_port
+  protocol          = "tcp"
+  cidr_ipv4         = "0.0.0.0/0"
+}
+
+resource "aws_vpc_security_group_ingress_rule" "allow_ssh" {
+  security_group_id = aws_security_group.aws_hello_sg.id
+  from_port         = 22
+  to_port           = 22
+  protocol          = "tcp"
+  cidr_ipv4         = "0.0.0.0/0"
 }
 
 resource "aws_instance" "hello_ec2" {
